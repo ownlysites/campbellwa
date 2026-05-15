@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Hub — Campbell Wealth Advisors</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/cwa-c-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy-d:#0a1f3d;--navy-m:#11355e;--orange:#e5793f;--orange-l:#f4995f;--gold-l:#e6c971;--cream:#f8f4ed;--cream-d:#efe9da;--white:#ffffff;--text:#1a1a1a;--text-m:#4a5568;--text-l:#6b7280;--border:#e2dccd;--ff:'Cormorant Garamond',Georgia,serif;--fb:'Inter',system-ui,sans-serif;--rs:6px;--rl:14px;--shadow:0 10px 40px -8px rgba(10,31,61,.18)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);font-size:15px;line-height:1.6;color:var(--text);background:linear-gradient(135deg,var(--cream) 0%,var(--cream-d) 100%);min-height:100vh;padding:30px 20px}
+.container{max-width:780px;margin:0 auto}
+.brand{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;background:#fff;border-radius:var(--rl);box-shadow:var(--shadow);margin-bottom:28px}
+.brand-logo img{height:42px;display:block}
+.brand-meta{text-align:right;font-size:11px;color:var(--text-m);letter-spacing:.05em}
+.brand-meta strong{display:block;color:var(--navy-d);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+
+.hero{background:linear-gradient(135deg,var(--navy-d) 0%,var(--navy-m) 70%);color:#fff;border-radius:var(--rl);padding:34px 36px;margin-bottom:26px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-30px;top:-20px;width:240px;height:240px;background:url('assets/cwa-c-mark.png') center/contain no-repeat;opacity:.12;pointer-events:none}
+.hero .eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);font-weight:600;margin-bottom:10px}
+.hero h1{font-family:var(--ff);font-size:32px;font-weight:600;color:#fff;line-height:1.15;margin-bottom:12px;letter-spacing:-.01em}
+.hero p{font-size:14px;color:rgba(255,255,255,.78);line-height:1.7;max-width:560px}
+
+.section{background:#fff;border-radius:var(--rl);padding:30px 34px;margin-bottom:22px;box-shadow:var(--shadow)}
+.section h2{font-family:var(--ff);font-size:22px;color:var(--navy-d);margin-bottom:6px;font-weight:600}
+.section .lede{font-size:13px;color:var(--text-m);margin-bottom:22px;line-height:1.6}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row.single{grid-template-columns:1fr}
+.form-field{display:flex;flex-direction:column}
+.form-field label{font-size:11px;font-weight:600;color:var(--navy-d);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.form-field input,.form-field select,.form-field textarea{border:1px solid var(--border);border-radius:var(--rs);padding:11px 13px;font-family:var(--fb);font-size:13.5px;color:var(--text);background:#fafaf6;transition:border-color .15s,background .15s}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--orange);background:#fff;box-shadow:0 0 0 3px rgba(229,121,63,.12)}
+.form-field textarea{min-height:130px;resize:vertical}
+.form-field .hint{font-size:11px;color:var(--text-l);margin-top:5px;font-style:italic}
+
+.file-upload{border:2px dashed var(--border);border-radius:var(--rs);padding:22px;text-align:center;background:#fafaf6;transition:border-color .15s,background .15s;cursor:pointer;position:relative}
+.file-upload:hover{border-color:var(--orange);background:#fff}
+.file-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-upload .ico{font-size:24px;color:var(--orange);margin-bottom:8px}
+.file-upload .ttl{font-size:13px;font-weight:600;color:var(--navy-d);margin-bottom:4px}
+.file-upload .hint{font-size:11px;color:var(--text-l)}
+.file-upload .filenames{font-size:11px;color:var(--orange);margin-top:8px;font-weight:600}
+
+.priority-pills{display:flex;gap:8px;margin-top:4px}
+.priority-pill{flex:1;border:1px solid var(--border);background:#fafaf6;padding:10px;border-radius:var(--rs);cursor:pointer;text-align:center;font-size:12px;font-weight:500;color:var(--text-m);transition:all .15s}
+.priority-pill:has(input:checked){border-color:var(--orange);background:#fff5ee;color:var(--orange);font-weight:600;box-shadow:0 0 0 3px rgba(229,121,63,.12)}
+.priority-pill input{position:absolute;opacity:0}
+
+.btn{display:inline-block;padding:13px 28px;border-radius:var(--rs);font-family:var(--fb);font-size:13px;font-weight:600;letter-spacing:.02em;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s;background:linear-gradient(135deg,var(--orange),var(--orange-l));color:#fff}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -4px rgba(229,121,63,.45)}
+.submit-row{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:22px;border-top:1px solid var(--border)}
+.submit-row .note{font-size:11px;color:var(--text-l);max-width:380px;line-height:1.5}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.timeline-step{background:var(--cream);border-radius:var(--rs);padding:14px 12px;text-align:center}
+.timeline-step .step-num{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--orange);color:#fff;font-size:12px;font-weight:700;line-height:24px;margin-bottom:8px}
+.timeline-step .ttl{font-family:var(--ff);font-size:14px;font-weight:600;color:var(--navy-d);margin-bottom:4px}
+.timeline-step .desc{font-size:11px;color:var(--text-m);line-height:1.5}
+@media(max-width:680px){.form-row{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}}
+
+.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+.quick-action{background:var(--cream);border:1px solid var(--border);border-radius:var(--rs);padding:14px;text-align:center;text-decoration:none;color:var(--navy-d);transition:all .15s;display:block}
+.quick-action:hover{border-color:var(--orange);background:#fff;transform:translateY(-1px);box-shadow:var(--shadow)}
+.quick-action .ico{font-size:22px;margin-bottom:6px;display:block}
+.quick-action .ttl{font-size:12px;font-weight:600;color:var(--navy-d)}
+.quick-action .desc{font-size:10px;color:var(--text-l);margin-top:3px}
+@media(max-width:540px){.quick-actions{grid-template-columns:1fr 1fr}}
+
+.footer-note{text-align:center;font-size:11px;color:var(--text-l);padding:24px 12px 8px;line-height:1.6}
+.footer-note strong{color:var(--navy-d)}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="brand">
+    <div class="brand-logo"><img src="assets/cwa-logo.png" alt="Campbell Wealth Advisors"></div>
+    <div class="brand-meta"><strong>Client Hub</strong>Private workspace for Campbell Wealth Advisors</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Welcome, Stuart</div>
+    <h1>Your year-round site update workspace.</h1>
+    <p>Use this hub to request any update to campbellwa.com — new copy, refreshed numbers, swapped photos, compliance updates, new team members, podcast embeds, anything. We deliver every approved update within 48 hours.</p>
+  </section>
+
+  <section class="section">
+    <h2>How it works</h2>
+    <p class="lede">Four steps. Built for your speed.</p>
+    <div class="timeline">
+      <div class="timeline-step"><div class="step-num">1</div><div class="ttl">Request</div><div class="desc">Fill in the form below — describe what you want changed</div></div>
+      <div class="timeline-step"><div class="step-num">2</div><div class="ttl">Acknowledge</div><div class="desc">Confirmation in your inbox within 1 business hour</div></div>
+      <div class="timeline-step"><div class="step-num">3</div><div class="ttl">Build</div><div class="desc">We make the edit on staging, send you a preview link</div></div>
+      <div class="timeline-step"><div class="step-num">4</div><div class="ttl">Live</div><div class="desc">Approved updates go live within 48 hours of request</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Submit an update request</h2>
+    <p class="lede">All fields except attachments are required. Attachments accepted: PNG, JPG, PDF, DOCX, MP3, MP4 — up to 25 MB total.</p>
+
+    <form action="https://submit-form.com/REPLACE_WITH_FORMSPARK_HUB_ID" method="POST" enctype="multipart/form-data" id="hubForm">
+      <input type="hidden" name="_subject" value="CWA Hub — New Update Request from Stuart">
+      <input type="hidden" name="_redirect" value="https://campbellwa.com/hub.html?submitted=1">
+
+      <div class="form-row single">
+        <div class="form-field">
+          <label>What needs to change?</label>
+          <input type="text" name="title" placeholder="One-line title — e.g. Update the cross-border services section copy" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Update type</label>
+          <select name="update_type" required>
+            <option value="">Select…</option>
+            <option>Copy / wording edit</option>
+            <option>New section or page</option>
+            <option>Image / headshot / photo swap</option>
+            <option>Testimonial add or update</option>
+            <option>Insights / blog article publish</option>
+            <option>Compliance language update (ADV, Privacy, disclaimers)</option>
+            <option>Service offering change</option>
+            <option>Contact info / hours / address</option>
+            <option>Bug or broken link</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Where on the site?</label>
+          <select name="location">
+            <option value="">Select section…</option>
+            <option>Hero / homepage opening</option>
+            <option>Trust badges</option>
+            <option>Services section</option>
+            <option>Cross-Border section</option>
+            <option>Founder panel (Stuart bio)</option>
+            <option>RM Investment Strategies section</option>
+            <option>Insights section</option>
+            <option>Contact form</option>
+            <option>Footer (offices, compliance, links)</option>
+            <option>Multiple sections</option>
+            <option>Not sure — Ownly to determine</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row single">
+        <div class="form-field">
+          <label>Describe the change in detail</label>
+          <textarea name="description" placeholder="Walk us through exactly what you want — paste new copy verbatim if it's a wording edit, or describe the visual change if it's an image swap. The more specific you are, the faster we deliver." required></textarea>
+          <div class="hint">Compliance note: any client testimonials must include "current client, non-compensated testimonial" — we'll add the disclosure if it's missing.</div>
+        </div>
+      </div>
+
+      <div class="form-row single">
+        <div class="form-field">
+          <label>Priority</label>
+          <div class="priority-pills">
+            <label class="priority-pill"><input type="radio" name="priority" value="Low" required>Low · whenever</label>
+            <label class="priority-pill"><input type="radio" name="priority" value="Normal" checked>Normal · 48 hours</label>
+            <label class="priority-pill"><input type="radio" name="priority" value="High">High · same day</label>
+            <label class="priority-pill"><input type="radio" name="priority" value="Urgent">Urgent · compliance</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row single">
+        <div class="form-field">
+          <label>Attachments (optional)</label>
+          <div class="file-upload">
+            <div class="ico">📎</div>
+            <div class="ttl">Drop files here or click to browse</div>
+            <div class="hint">Images for headshots, screenshots, PDFs, docs — up to 25 MB total</div>
+            <div class="filenames" id="filenameDisplay"></div>
+            <input type="file" name="attachments" multiple accept=".png,.jpg,.jpeg,.gif,.webp,.pdf,.docx,.doc,.mp3,.mp4,.mov,.heic" id="fileInput">
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <div class="note"><strong>Confirmation:</strong> you'll receive an email within 1 business hour with your request ID. Track status by replying to that thread.</div>
+        <button type="submit" class="btn">Submit Request →</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="section">
+    <h2>Quick actions</h2>
+    <p class="lede">Other things you can do without opening a request.</p>
+    <div class="quick-actions">
+      <a href="https://calendly.com/stuart-campbellwa" class="quick-action" target="_blank"><span class="ico">📅</span><div class="ttl">Book Time with Dave</div><div class="desc">15 min · screen-share</div></a>
+      <a href="mailto:david@ownly1nce.com?subject=CWA%20%E2%80%94%20Quick%20question" class="quick-action"><span class="ico">✉️</span><div class="ttl">Email Direct</div><div class="desc">david@ownly1nce.com</div></a>
+      <a href="tel:+19412779876" class="quick-action"><span class="ico">📞</span><div class="ttl">Text or Call</div><div class="desc">(941) 277-9876</div></a>
+      <a href="/docs/CWA-ADV-Part-2A.pdf" class="quick-action" target="_blank"><span class="ico">📄</span><div class="ttl">View Current ADV 2A</div><div class="desc">Live download</div></a>
+      <a href="/docs/Campbell-ADV-Part-2B.pdf" class="quick-action" target="_blank"><span class="ico">📄</span><div class="ttl">View Current ADV 2B</div><div class="desc">Live download</div></a>
+      <a href="/docs/Privacy-Notice-2026.pdf" class="quick-action" target="_blank"><span class="ico">📄</span><div class="ttl">View Privacy Notice</div><div class="desc">Live download</div></a>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <strong>Campbell Wealth Advisors · Client Hub</strong><br>
+    Powered by Ownly ONCE · For Stuart Campbell, CFP®, TEP<br>
+    <em>Year-round site updates included in your maintenance plan. No request too small.</em>
+  </div>
+
+</div>
+
+<script>
+// Show filenames on file pick
+document.getElementById('fileInput').addEventListener('change', function(e) {
+  var files = Array.from(e.target.files);
+  var display = document.getElementById('filenameDisplay');
+  if (files.length === 0) { display.textContent = ''; return; }
+  var totalMB = files.reduce((sum, f) => sum + f.size, 0) / (1024 * 1024);
+  display.textContent = files.length + ' file' + (files.length > 1 ? 's' : '') + ' attached · ' + totalMB.toFixed(1) + ' MB total';
+});
+
+// Show success banner on redirect from successful submit
+if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+  var banner = document.createElement('div');
+  banner.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#0a1f3d;color:#fff;padding:14px 24px;border-radius:14px;box-shadow:0 10px 40px -8px rgba(10,31,61,.4);font-size:13px;z-index:1000;max-width:500px;text-align:center;line-height:1.5;';
+  banner.innerHTML = '<strong style="color:#e6c971">Request received.</strong><br>Confirmation email arriving within the hour. We\'ll have a staging preview to you within 48 hours.';
+  document.body.appendChild(banner);
+  setTimeout(function(){banner.style.opacity='0';banner.style.transition='opacity .6s';},5000);
+  setTimeout(function(){banner.remove();},6000);
+  // Clean URL
+  history.replaceState({}, '', window.location.pathname);
+}
+</script>
+</body>
+</html>
